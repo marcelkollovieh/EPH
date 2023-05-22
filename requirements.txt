@@ -1,0 +1,5 @@
+pytorch_lightning==1.5.9
+torch~=1.11.0
+scikit-network
+scikit_learn
+scipy
