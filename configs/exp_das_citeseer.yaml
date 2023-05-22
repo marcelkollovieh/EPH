@@ -1,0 +1,31 @@
+seed: 6432
+dataset_params:
+  dataset_path: "./datasets/"
+  dataset_name: citeseer
+  select_lcc: True
+  remove_selfloops: False
+  make_undirected: True
+  make_unweighted: True
+  #percent: n_root_n
+
+model_params:
+  internal_nodes: 512
+  gumbel_samples: 20
+  loss: 'EXP_DAS'
+  optimizer_params:
+    optimizer_type: PAdamax
+    opt_params: [{ "params": [ "A_u.weight" ], "lr": 0.05 }, { "params": [ "B_u" ], "lr": 0.1 }]
+  ReduceLROnPlateau:
+    reset: 1000
+    patience: 4000
+    factorA: 1.0
+    factorB: 0.1
+  early_stopping: 'True'
+
+training_params:
+  max_epochs: 10000
+  use_gpu: True
+  val_every: 1
+
+
+
